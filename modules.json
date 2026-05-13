@@ -1,0 +1,253 @@
+{
+  "modules": [
+    {
+      "id": "ivar_frame",
+      "name": "IVAR Frame",
+      "description": "The base structure of every MODUL.IO setup. A standard IKEA IVAR shelf, recreated in CAD since no open-source file existed.",
+      "category": "base",
+      "required": true,
+      "thumbnail": "thumbnails/ivar_frame.png",
+      "purchase_link": "https://www.ikea.com/dk/da/p/ivar-sektion-fyr-80299282/",
+      "parts": [
+        {
+          "file": "stl/ivar_frame.stl",
+          "name": "IVAR Frame",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Purchase from IKEA"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "cad/ivar_frame.step",
+          "label": "Download IVAR CAD (STEP)",
+          "type": "cad"
+        }
+      ]
+    },
+    {
+      "id": "buildplate_shelf",
+      "name": "Buildplate Shelf",
+      "description": "A modular rack system for portable laser-cut work trays. Lets you pick up an entire project and move it to a meeting table — then slot it back in.",
+      "category": "storage",
+      "required": false,
+      "thumbnail": "thumbnails/buildplate_shelf.png",
+      "parts": [
+        {
+          "file": "stl/parts/buildplate_shelf/roundbar_interface.stl",
+          "name": "Roundbar Interface",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/buildplate_shelf/roundbar_divider.stl",
+          "name": "Roundbar Divider",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/buildplate_shelf/shelf_stopper.stl",
+          "name": "Shelf Stopper",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/buildplate_shelf/l_bracket.stl",
+          "name": "L-Bracket",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.2mm layer height, 30% infill, no supports"
+        },
+        {
+          "file": "stl/parts/buildplate_shelf/buildplate_small.stl",
+          "name": "Buildplate (Small)",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Laser cut — see DXF file below"
+        },
+        {
+          "file": "stl/parts/buildplate_shelf/buildplate_large.stl",
+          "name": "Buildplate (Large)",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Laser cut — see DXF file below"
+        },
+        {
+          "file": "stl/parts/shared/screw_small.stl",
+          "name": "Small Screw",
+          "downloadable": true,
+          "quantity": 8,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        },
+        {
+          "file": "stl/parts/shared/screw_large.stl",
+          "name": "Large Screw",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        },
+        {
+          "file": "stl/parts/shared/dowel.stl",
+          "name": "Dowel",
+          "downloadable": true,
+          "quantity": 8,
+          "print_settings": "0.2mm layer height, 40% infill, no supports"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "lasercut/buildplate_small.dxf",
+          "label": "Download Buildplate Small (DXF)",
+          "type": "lasercut",
+          "coming_soon": true
+        },
+        {
+          "file": "lasercut/buildplate_large.dxf",
+          "label": "Download Buildplate Large (DXF)",
+          "type": "lasercut",
+          "coming_soon": true
+        }
+      ]
+    },
+    {
+      "id": "whiteboard",
+      "name": "Whiteboard Panel",
+      "description": "Translucent orange acrylic panels that double as writable whiteboards. Laser-cut in Skylab's own makerspace. Swap for opaque acrylic for more privacy.",
+      "category": "panel",
+      "required": false,
+      "thumbnail": "thumbnails/whiteboard.png",
+      "parts": [
+        {
+          "file": "stl/parts/whiteboard/whiteboard_interface_ab.stl",
+          "name": "Interface AB",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/whiteboard/whiteboard_interface_ab_corner.stl",
+          "name": "Interface AB Corner",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/whiteboard/whiteboard_interface_ac_bd.stl",
+          "name": "Interface AC/BD (Short Side)",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 20% infill, no supports"
+        },
+        {
+          "file": "stl/parts/whiteboard/whiteboard_panel.stl",
+          "name": "Whiteboard Panel",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Laser cut from translucent orange acrylic — see DXF/SVG below"
+        },
+        {
+          "file": "stl/parts/shared/screw_small.stl",
+          "name": "Small Screw",
+          "downloadable": true,
+          "quantity": 8,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        },
+        {
+          "file": "stl/parts/shared/screw_large.stl",
+          "name": "Large Screw",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        }
+      ],
+      "downloads": [
+        {
+          "file": "lasercut/whiteboard.dxf",
+          "label": "Download Whiteboard Panel (DXF)",
+          "type": "lasercut"
+        },
+        {
+          "file": "lasercut/whiteboard.svg",
+          "label": "Download Whiteboard Panel (SVG)",
+          "type": "lasercut",
+          "coming_soon": true
+        }
+      ]
+    },
+    {
+      "id": "skadis",
+      "name": "Skådis Pegboard",
+      "description": "IKEA Skådis pegboard mounted to the IVAR frame via a custom 3D-printed interface. Keeps tools visible and accessible without taking up shelf space.",
+      "category": "panel",
+      "required": false,
+      "thumbnail": "thumbnails/skadis.png",
+      "purchase_link": "https://www.ikea.com/dk/da/p/skadis-opslagstavle-hvid-40321618/",
+      "parts": [
+        {
+          "file": "stl/parts/skadis/skadis_interface.stl",
+          "name": "Skådis Interface",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.2mm layer height, 25% infill, no supports"
+        },
+        {
+          "file": "stl/parts/skadis/skadis_pegboard.stl",
+          "name": "Skådis Pegboard",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Purchase from IKEA"
+        },
+        {
+          "file": "stl/parts/shared/screw_large.stl",
+          "name": "Large Screw",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        }
+      ],
+      "downloads": []
+    },
+    {
+      "id": "eurobox",
+      "name": "Eurobox Storage",
+      "description": "Standard Euroboxes mounted at the base of the IVAR frame via a custom 3D-printed interface. Ideal for bulkier project materials and tools.",
+      "category": "storage",
+      "required": false,
+      "thumbnail": "thumbnails/eurobox.png",
+      "parts": [
+        {
+          "file": "stl/parts/eurobox/eurobox_interface.stl",
+          "name": "Eurobox Interface",
+          "downloadable": true,
+          "quantity": 2,
+          "print_settings": "0.2mm layer height, 25% infill, no supports"
+        },
+        {
+          "file": "stl/parts/eurobox/eurobox_large.stl",
+          "name": "Eurobox Large",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Purchase from any industrial supplier (600×400mm)"
+        },
+        {
+          "file": "stl/parts/eurobox/eurobox_small.stl",
+          "name": "Eurobox Small",
+          "downloadable": false,
+          "viewer_only": true,
+          "note": "Purchase from any industrial supplier (300×400mm)"
+        },
+        {
+          "file": "stl/parts/shared/screw_large.stl",
+          "name": "Large Screw",
+          "downloadable": true,
+          "quantity": 4,
+          "print_settings": "0.15mm layer height, 40% infill, no supports"
+        }
+      ],
+      "downloads": []
+    }
+  ]
+}
