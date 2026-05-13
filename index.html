@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MODUL.IO — Configurator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --orange: #C97A1A;
+      --orange-light: #E8952A;
+      --orange-dim: rgba(201, 122, 26, 0.13);
+      --bg: #F2EDE6;
+      --surface: #FFFFFF;
+      --surface2: #EDE8E0;
+      --border: #D9D0C4;
+      --text: #1C1A17;
+      --muted: #7A7060;
+      --wood: #D4A96A;
+      --dark-interface: #2E2C2A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(242, 237, 230, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .logo span { color: var(--orange); }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--orange-dim);
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .wood-strip {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #D4A96A, #C97A1A, #2E2C2A, #C97A1A, #D4A96A);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      background: var(--orange-dim);
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+
+    h1 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* COMING SOON CARD */
+    .coming-soon {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      max-width: 680px;
+      margin: 0 auto 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coming-soon::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      background: var(--surface2);
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 35%;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      border-radius: 999px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .milestone-list {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .milestone-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .milestone-list li .dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+    }
+
+    .dot.done { background: var(--dark-interface); color: #fff; }
+    .dot.active { background: var(--orange-dim); border: 1.5px solid var(--orange); color: var(--orange); }
+    .dot.todo { background: var(--surface2); border: 1.5px solid var(--border); color: var(--muted); }
+
+    .milestone-list li.done-item { color: var(--text); }
+    .milestone-list li.active-item { color: var(--text); font-weight: 500; }
+    .milestone-list li.todo-item { color: var(--muted); }
+
+    /* FEATURES */
+    .features {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .features h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover { border-color: var(--orange); }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* MODULES PREVIEW */
+    .modules {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+    }
+
+    .modules h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .modules > p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      position: relative;
+      opacity: 0.6;
+    }
+
+    .module-card.available { opacity: 1; cursor: pointer; }
+    .module-card.available:hover { border-color: var(--orange); }
+
+    .module-placeholder {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #E8D5B0, #D4A96A);
+      border-radius: 8px;
+      margin: 0 auto 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .module-card h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .module-card span {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .module-tag {
+      position: absolute;
+      top: 0.6rem;
+      right: 0.6rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .tag-soon { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+    .tag-ready { background: var(--dark-interface); color: #fff; border: 1px solid var(--dark-interface); }
+
+    /* OPEN SOURCE */
+    .opensource {
+      max-width: 680px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .opensource h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .opensource p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--orange); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">MODUL<span>.</span>IO</div>
+    <div class="nav-badge">Configurator Preview</div>
+  </nav>
+
+  <div class="wood-strip"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Open Source · DTU Skylab · 2026</div>
+    <h1>Configure your<br/><em>MODUL.IO</em> workspace</h1>
+    <p>Select your modules, visualise your booth layout, and download the files to build it yourself. Designed for shared makerspaces. Built to be remixed.</p>
+  </section>
+
+  <!-- COMING SOON CARD -->
+  <div class="coming-soon">
+    <div class="progress-label">
+      <span>Configurator build progress</span>
+      <span>35%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <ul class="milestone-list">
+      <li class="done-item"><span class="dot done">✓</span> Product design & physical prototyping complete</li>
+      <li class="done-item"><span class="dot done">✓</span> STL files exported for all 3D printed parts</li>
+      <li class="done-item"><span class="dot done">✓</span> Repository live & open source</li>
+      <li class="active-item"><span class="dot active">→</span> Module catalog & file downloads (in progress)</li>
+      <li class="todo-item"><span class="dot todo">·</span> 3D visualizer — see configurations in the browser</li>
+      <li class="todo-item"><span class="dot todo">·</span> Booth layout builder — drag & drop modules</li>
+    </ul>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-label">What's coming</div>
+    <h2>Everything you need to build your own</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧩</div>
+        <h3>Module picker</h3>
+        <p>Browse all MODUL.IO components and select the ones that fit your space and workflow.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔲</div>
+        <h3>3D preview</h3>
+        <p>Visualise your configuration in the browser before committing to any prints.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⬇️</div>
+        <h3>Download STL files</h3>
+        <p>Get exactly the files you need — nothing more. Ready to send to any FDM printer.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Bill of materials</h3>
+        <p>A generated parts list with quantities, off-the-shelf sourcing links, and print settings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE PREVIEW -->
+  <section class="modules">
+    <div class="section-label">Components</div>
+    <h2>The MODUL.IO system</h2>
+    <p>Six core components. One coherent system. All open source.</p>
+    <div class="module-grid">
+      <div class="module-card available">
+        <span class="module-tag tag-ready">Ready</span>
+        <div class="module-placeholder">🗄️</div>
+        <h4>IKEA Ivar Frame</h4>
+        <span>Base structure</span>
+      </div>
+      <div class="module-card available">
+        <span class="module-tag tag-ready">Ready</span>
+        <div class="module-placeholder">📦</div>
+        <h4>Build Plate Tray</h4>
+        <span>3D print · STL</span>
+      </div>
+      <div class="module-card available">
+        <span class="module-tag tag-ready">Ready</span>
+        <div class="module-placeholder">🔩</div>
+        <h4>Interfaces</h4>
+        <span>3D print · STL</span>
+      </div>
+      <div class="module-card">
+        <span class="module-tag tag-soon">Soon</span>
+        <div class="module-placeholder">🪛</div>
+        <h4>Pegboard Panel</h4>
+        <span>Tool organisation</span>
+      </div>
+      <div class="module-card">
+        <span class="module-tag tag-soon">Soon</span>
+        <div class="module-placeholder">✏️</div>
+        <h4>Whiteboard Panel</h4>
+        <span>Laser cut · acrylic</span>
+      </div>
+      <div class="module-card">
+        <span class="module-tag tag-soon">Soon</span>
+        <div class="module-placeholder">📐</div>
+        <h4>Tray Rack</h4>
+        <span>3D print · STL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section class="opensource">
+    <div class="section-label">Open Source</div>
+    <h2>Built to be remixed</h2>
+    <p>MODUL.IO was designed at DTU Skylab as part of the Holistic Design of Engineering Systems course. All design files, STL prints, and laser cut templates are free to use, modify, and adapt under the MIT license.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://github.com/Fabian8484/Modulio">
+        ⬡ View on GitHub
+      </a>
+      <a class="btn btn-ghost" href="#">
+        📄 Read the report
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>MODUL.IO · DTU Skylab · Group 10 · 41639 Holistic Design of Engineering Systems</div>
+    <div>
+      <a href="https://github.com/Fabian8484/Modulio">GitHub</a> ·
+      <a href="#">MIT License</a>
+    </div>
+  </footer>
+
+</body>
+</html>
